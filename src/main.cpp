@@ -10,11 +10,15 @@
 
 #include "drawable/normalmap.h"
 
+#include "./threads/record_thread.h"
+
 void error_callback(int error, const char *description) {
 	fputs(description, stderr);
 }
 
 int main(int argc, char **argv) {
+	create_record_thread(44100, 256, 2);
+
 	chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
 
 	chrono::duration<double> time_span = t1.time_since_epoch();
